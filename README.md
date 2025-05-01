@@ -34,7 +34,7 @@ yarn dev     # http://localhost:3001
 
 ---
 
-## 1. Travail en équipe
+## 2. Travail en équipe
 
 ```bash
 # Créer une branche
