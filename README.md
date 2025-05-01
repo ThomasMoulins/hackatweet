@@ -17,7 +17,7 @@ Le dépôt est organisé en deux parties :
 > Pré-requis : **Git**, **Node.js ≥ 16** et **Yarn** (ou `npm`).
 
 ```bash
-# Cloner le dépôt
+# Cloner le dépôt dépot distant
 git clone https://github.com/ThomasMoulins/hackatweet.git
 cd hackatweet
 
@@ -30,4 +30,33 @@ yarn start     # http://localhost:3000
 cd frontend
 yarn install
 yarn dev     # http://localhost:3001
+```
+
+---
+
+## 1. Travail en équipe
+
+```bash
+# Créer une branche
+git branch branchName
+
+# Changer de branche
+git checkout branchName
+
+# Valider son travail
+git add .
+git commit -m "change"
+
+# Récupérer les modifications du dépot distant
+git pull origin main
+
+# Revenir sur la branche principale et fusionner
+git checkout main
+git merge branchName
+
+# Supprimer la branche locale
+git branch -d branchName
+
+# Pousser les modifications vers GitHub
+git push origin main
 ```
