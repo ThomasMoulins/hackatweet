@@ -1,5 +1,5 @@
 # Hackatweet 🐦  
-Projet hackathon – README rapide
+Projet hackathon
 --------------------------------
 
 Bienvenue sur **Hackatweet**, une application Web temps-réel, développée pendant le hackathon du 02/05/2025 au 05/05/2025.  
