@@ -1,4 +1,3 @@
-import Login from "../components/Login";
 import Home from "../components/Home";
 import { useSelector } from "react-redux";
 import { useRouter } from "next/router";

@@ -1,0 +1,15 @@
+.tweetContainer {
+  background-color: gray;
+  padding: 20px;
+}
+
+.tweetUser {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.icon {
+  border-radius: 50%;
+  object-fit: cover;
+}
