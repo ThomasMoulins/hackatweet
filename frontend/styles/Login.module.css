@@ -23,7 +23,9 @@
   border-radius: 50px;
   border: none;
   padding: 10px 50px;
+  font-family: "Mont-Heavy";
   color: white;
+  font-weight: bold;
   cursor: pointer;
 }
 
@@ -36,7 +38,9 @@
   border-radius: 50px;
   border: 2px gray solid;
   padding: 10px 50px;
+  font-family: "Mont-Heavy";
   color: #3690ee;
+  font-weight: bold;
   cursor: pointer;
 }
 
