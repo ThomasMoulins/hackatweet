@@ -11,7 +11,7 @@
   margin: 30px;
   display: flex;
   flex-direction: column;
-  align-items: start;
+  align-items: flex-start;
 }
 
 .logo {
@@ -21,8 +21,25 @@
 .btnFull {
   background-color: #3690ee;
   border-radius: 50px;
+  border: none;
+  padding: 10px 50px;
+  color: white;
+  cursor: pointer;
+}
+
+.btnFull:hover {
+  background-color: #2c77c6;
 }
 
 .btnGhost {
+  background-color: inherit;
+  border-radius: 50px;
   border: 2px gray solid;
+  padding: 10px 50px;
+  color: #3690ee;
+  cursor: pointer;
+}
+
+.btnGhost:hover {
+  background-color: #222f40;
 }
