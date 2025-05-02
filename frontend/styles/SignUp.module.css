@@ -1,0 +1,44 @@
+.signUpModalBg {
+  position: fixed;
+  z-index: 99;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+}
+
+.signUpContainer {
+  position: relative;
+  margin-top: 5%;
+  padding: 100px 0;
+  background-color: #151d27;
+  border-radius: 15px;
+  width: 35%;
+  height: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.closeIcon {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: transparent;
+  border: none;
+  color: #ffffff;
+  font-size: 1.3rem;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.closeIcon:hover,
+.closeIcon:focus-visible {
+  color: #1da1f2; /* petite interaction */
+  outline: none;
+}
+
+.logo {
+  object-fit: contain;
+}

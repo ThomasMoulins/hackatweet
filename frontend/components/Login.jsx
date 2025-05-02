@@ -20,7 +20,7 @@ function Login() {
         <div
           style={{
             position: "relative",
-            width: "40%",
+            width: "44%",
             height: "100vh",
           }}
         >
