@@ -1,0 +1,28 @@
+.main {
+  background-color: black;
+  display: flex;
+}
+
+.background {
+  object-fit: cover;
+}
+
+.loginContainer {
+  margin: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+}
+
+.logo {
+  object-fit: contain;
+}
+
+.btnFull {
+  background-color: #3690ee;
+  border-radius: 50px;
+}
+
+.btnGhost {
+  border: 2px gray solid;
+}

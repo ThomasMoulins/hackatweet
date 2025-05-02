@@ -1,4 +1,4 @@
-import styles from "../styles/Home.module.css";
+import styles from "../styles/Login.module.css";
 import Head from "next/head";
 import Image from "next/image";
 
@@ -9,12 +9,38 @@ function Login() {
         <title>HACKATWEET - Login</title>
       </Head>
       <main className={styles.main}>
-        <Image
-          src="/images/hackatweet-background.png"
-          alt="hackatweet background"
-          width={300}
-          height={600}
-        />
+        <div
+          style={{
+            position: "relative",
+            width: "40%",
+            height: "100vh",
+          }}
+        >
+          <Image
+            src="/images/hackatweet-background.png"
+            alt="hackatweet background"
+            className={styles.background}
+            layout="fill"
+          />
+        </div>
+        <div className={styles.loginContainer}>
+          <Image
+            src="/images/hackatweet-logo.png"
+            alt="hackatweet logo"
+            className={styles.logo}
+            width={60}
+            height={60}
+          />
+          <h2>
+            See what's
+            <br />
+            happening
+          </h2>
+          <h3>Join Hackatweet today.</h3>
+          <button>Sign up</button>
+          <span>Already have an account?</span>
+          <button>Sign in</button>
+        </div>
       </main>
     </>
   );
