@@ -1,0 +1,71 @@
+.signInModalBg {
+  position: fixed;
+  z-index: 99;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+}
+
+.signInContainer {
+  position: relative;
+  margin-top: 5%;
+  padding-top: 50px;
+  background-color: #151d27;
+  border-radius: 15px;
+  width: 35%;
+  height: 430px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.closeIcon {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: transparent;
+  border: none;
+  color: #ffffff;
+  font-size: 1.3rem;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.closeIcon:hover,
+.closeIcon:focus-visible {
+  color: grey;
+  outline: none;
+}
+
+.logo {
+  object-fit: contain;
+}
+
+.input {
+  background-color: inherit;
+  border: 1px #bac0c6 solid;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  height: 30px;
+  color: white;
+  padding: 20px 12px;
+  width: 40%;
+}
+
+.button {
+  background-color: white;
+  border: none;
+  border-radius: 50px;
+  margin-top: 15px;
+  padding: 10px 12px;
+  width: 40%;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: medium;
+}
+
+.button:hover {
+  background-color: rgb(218, 217, 217);
+}
