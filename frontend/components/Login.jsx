@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useState } from "react";
 import SignIn from "./SignIn";
 import SignUp from "./SignUp";
+import Link from "next/link";
 
 function Login() {
   const [isModalSignUpVisible, setIsModalSignUpVisible] = useState(false);
@@ -11,6 +12,9 @@ function Login() {
 
   return (
     <>
+    <div>
+      <Link href="/home">Go to Home profil</Link>
+    </div>
       <Head>
         <title>HACKATWEET - Login</title>
       </Head>

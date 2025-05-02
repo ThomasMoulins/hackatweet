@@ -1,24 +1,56 @@
 .main {
+  background-color: rgb(24, 31, 41);
+  height: 100dvh;
+  width: 100%;
+}
+
+
+.logo {
+  padding-top: 30px;
+  padding-left: 50px;
+}
+
+.oeuf {
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.utilisateur {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  flex-direction: row;
   align-items: center;
-  min-height: 100vh;
-  padding: 4rem 0;
+  height: auto;
+  width: auto;
 }
 
-.title {
-  line-height: 1.15;
-  font-size: 4rem;
+.left {
+  display: flex;
+  height: 100%;
+  width: 20%;
+  justify-content: space-between;
+  flex-direction: column;
 }
 
-.title a {
-  color: #0070f3;
-  text-decoration: none;
+.name {
+  margin-left: 10px;
 }
 
-.title a:hover,
-.title a:focus,
-.title a:active {
-  text-decoration: underline;
+.logout {
+  background-color: rgb(24, 31, 41);
+  border-radius: 20px;
+  border: 1px gray solid;
+  color: white;
+  height: 30px;
+  width: 100px;
+  margin-top: 30px ;
+}
+
+.bottom {
+  padding: 0 0 30px 50px;
+}
+
+.username {
+  font-family: "Mont-Light";
+  color: grey;
+  font-weight: 1000;
 }
