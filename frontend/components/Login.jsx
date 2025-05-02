@@ -18,8 +18,12 @@ function Login() {
       <Head>
         <title>HACKATWEET - Login</title>
       </Head>
-      {isModalSignUpVisible && <SignUp />}
-      {isModalSignInVisible && <SignIn />}
+      {isModalSignUpVisible && (
+        <SignUp onClose={() => setIsModalSignUpVisible(false)} />
+      )}
+      {isModalSignInVisible && (
+        <SignIn onClose={() => setIsModalSignInVisible(false)} />
+      )}
       <main className={styles.main}>
         <div
           style={{

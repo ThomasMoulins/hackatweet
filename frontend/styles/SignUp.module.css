@@ -10,11 +10,11 @@
 .signUpContainer {
   position: relative;
   margin-top: 5%;
-  padding: 100px 0;
+  padding-top: 50px;
   background-color: #151d27;
   border-radius: 15px;
   width: 35%;
-  height: 50%;
+  height: 430px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -35,10 +35,37 @@
 
 .closeIcon:hover,
 .closeIcon:focus-visible {
-  color: #1da1f2; /* petite interaction */
+  color: grey;
   outline: none;
 }
 
 .logo {
   object-fit: contain;
+}
+
+.input {
+  background-color: inherit;
+  border: 1px #bac0c6 solid;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  height: 30px;
+  color: white;
+  padding: 20px 12px;
+  width: 40%;
+}
+
+.button {
+  background-color: white;
+  border: none;
+  border-radius: 50px;
+  margin-top: 15px;
+  padding: 10px 12px;
+  width: 40%;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: medium;
+}
+
+.button:hover {
+  background-color: rgb(218, 217, 217);
 }
