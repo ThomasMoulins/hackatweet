@@ -131,7 +131,7 @@ function Home({ hashtag }) {
             {hashtags.map((data, i) => (
               <Link key={i} href={`/hashtag/${data.name}`}>
                 <div className={styles.hashtagLink}>
-                  <div>#{data.name}</div>
+                  <div className={styles.hashtagText}>#{data.name}</div>
                   <div className={styles.hashtagNumber}>
                     {data.count} Tweet{data.count > 1 && "s"}
                   </div>

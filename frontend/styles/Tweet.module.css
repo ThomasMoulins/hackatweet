@@ -31,3 +31,7 @@
   color: gray;
   cursor: pointer;
 }
+
+.tweetText {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}

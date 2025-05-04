@@ -47,7 +47,7 @@ function Tweet({ firstname, username, text, like, date }) {
           <span className={styles.username}>@{username} · a few seconds</span>
         </p>
       </div>
-      <p>{renderTextWithHashtags(text)}</p>
+      <p className={styles.tweetText}>{renderTextWithHashtags(text)}</p>
       <div className={styles.iconContainer}>
         <FontAwesomeIcon icon={faHeart} />
         <span style={{ margin: "0 30px 0 10px" }}>{like}</span>

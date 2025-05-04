@@ -53,13 +53,18 @@
 }
 
 .logout {
-  background-color: rgb(24, 31, 41);
+  background-color: inherit;
   border-radius: 20px;
   border: 1px gray solid;
   color: white;
   height: 30px;
   width: 100px;
   margin-top: 30px;
+  cursor: pointer;
+}
+
+.logout:hover {
+  background-color: rgba(180, 180, 180, 0.2);
 }
 
 .bottom {
@@ -138,8 +143,13 @@
   background: transparent;
 }
 
-.hashtagLink {
+.hashtagLink:hover {
   cursor: pointer;
+  color: rgb(175, 175, 175);
+}
+
+.hashtagText {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .hashtagNumber {
