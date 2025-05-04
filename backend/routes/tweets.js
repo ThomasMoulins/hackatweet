@@ -7,14 +7,18 @@ const { checkBody } = require("../modules/checkBody");
 /* ------ Post Tweet ------ */
 router.post("/", (req, res) => {
   try {
-    if (!checkBody(req.body, ["text", "username", "hashtags"])) {
+    if (!checkBody(req.body, ["text", "username"])) {
       res.json({ result: false, error: "Missing or empty fields" });
       return;
     }
+
+    const regex = /#([\p{L}\p{N}_]+)/gu;
+    const hashtags = Array.from(req.body.text.matchAll(regex), (m) => m[1]);
+
     User.findOne({ username: req.body.username }).then((user) => {
       const newTweet = new Tweet({
         text: req.body.text,
-        hashtags: req.body.hashtags,
+        hashtags: hashtags,
         date: new Date(),
         like: 0,
         user: user._id,
