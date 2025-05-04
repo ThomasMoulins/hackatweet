@@ -75,21 +75,48 @@
 .search {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  height: 100%;
-  width: 100%;
+  align-items: flex-end;
+  width: 80%;
+  margin: 0 auto;
 }
 
-.text {
-  background-color: rgb(24, 31, 41);
+.input {
+  background-color: inherit;
   border: none;
   border-bottom: 1px gray solid;
-  height: 50px;
-  width: 500px;
+  margin-bottom: 20px;
+  min-width: 100%;
+  max-width: 100%;
+  min-height: 25px;
+  max-height: 300px;
+  color: white;
+}
+
+.input:focus {
+  outline: none;
 }
 
 .home {
+  margin: 0 30px;
+}
+
+.tweetButton {
+  margin: 0 0 20px 20px;
+  background-color: #3690ee;
+  border-radius: 50px;
+  border: none;
+  padding: 5px 20px;
+  font-family: "Mont-Heavy";
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.tweetButton:hover {
+  background-color: #2c77c6;
+}
+
+.hashtagsContainer {
   display: flex;
   flex-direction: column;
   justify-content: center;
