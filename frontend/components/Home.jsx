@@ -1,8 +1,9 @@
 import styles from "../styles/Home.module.css";
 import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 import Head from "next/head";
 import Image from "next/image";
-import { useRouter } from "next/router";
+import Link from "next/link";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../reducers/user";
 import LastTweets from "./LastTweets";
@@ -14,6 +15,18 @@ function Home() {
   const [hashtags, setHashtags] = useState([]);
   const [newTweet, setNewTweet] = useState("");
   const [refreshTweets, setRefreshTweets] = useState(false);
+
+  const fetchHashtags = () => {
+    fetch("http://localhost:3000/tweets/hashtags")
+      .then((response) => response.json())
+      .then((data) => {
+        data.result && setHashtags(data.hashtags);
+      });
+  };
+
+  useEffect(() => {
+    fetchHashtags();
+  }, []);
 
   const handleLogout = () => {
     dispatch(logout());
@@ -103,7 +116,19 @@ function Home() {
             </>
         </div>
         <div className={styles.right}>
-        <h1>Trend</h1>
+          <h1>Trends</h1>
+          <div className={styles.hashtagsContainer}>
+            {hashtags.map((data, i) => (
+              <Link key={i} href={`/hashtag/${data.name}`}>
+                <div className={styles.hashtagLink}>
+                  <div>#{data.name}</div>
+                  <div className={styles.hashtagNumber}>
+                    {data.count} Tweet{data.count > 1 && "s"}
+                  </div>
+                </div>
+              </Link>
+            ))}
+          </div>
         </div>
       </main>
     </>

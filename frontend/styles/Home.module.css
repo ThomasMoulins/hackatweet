@@ -119,8 +119,31 @@
 .hashtagsContainer {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-  height: 20%;
-  background-color: red;
+  gap: 40px;
+  background-color: #20262e;
+  border-radius: 15px;
+  padding: 20px;
+  max-height: 80%;
+  overflow-y: auto;
+}
+
+.hashtagsContainer::-webkit-scrollbar {
+  width: 2px;
+}
+.hashtagsContainer::-webkit-scrollbar-thumb {
+  background-color: rgb(255, 255, 255);
+  border-radius: 3px;
+}
+.hashtagsContainer::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.hashtagLink {
+  cursor: pointer;
+}
+
+.hashtagNumber {
+  padding-top: 10px;
+  font-size: smaller;
+  color: grey;
 }

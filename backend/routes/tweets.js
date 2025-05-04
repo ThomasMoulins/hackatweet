@@ -47,5 +47,45 @@ router.get("/", (req, res) => {
   }
 });
 
+/* ------ Get tweets by hashtag ------ */
+router.get("/hashtags/:hashtag", (req, res) => {
+  try {
+    Tweet.find({ hashtags: req.params.hashtag })
+      .sort({ date: -1 })
+      .populate("user", "firstname username -_id")
+      .then((tweets) => {
+        res.json({ result: true, tweets: tweets });
+      });
+  } catch (e) {
+    res.status(500).json({ result: false, error: e.message });
+  }
+});
+
+/* ------ Get all Hashtags ------ */
+router.get("/hashtags", async (req, res) => {
+  try {
+    const hashtags = await Tweet.aggregate([
+      { $unwind: "$hashtags" },
+      {
+        $group: {
+          _id: "$hashtags",
+          count: { $sum: 1 },
+        },
+      },
+      {
+        $project: {
+          _id: 0,
+          name: "$_id",
+          count: 1,
+        },
+      },
+      { $sort: { count: -1, name: 1 } },
+    ]);
+
+    return res.json({ result: true, hashtags });
+  } catch (e) {
+    return res.status(500).json({ result: false, error: e.message });
+  }
+});
 
 module.exports = router;
