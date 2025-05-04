@@ -33,6 +33,7 @@ router.post("/", (req, res) => {
 router.get("/", (req, res) => {
   try {
     Tweet.find()
+      .sort({ date: -1 })
       .populate("user", "firstname username -_id")
       .then((tweets) => {
         res.json({ result: true, tweets: tweets });
@@ -41,5 +42,6 @@ router.get("/", (req, res) => {
     res.status(500).json({ result: false, error: e.message });
   }
 });
+
 
 module.exports = router;

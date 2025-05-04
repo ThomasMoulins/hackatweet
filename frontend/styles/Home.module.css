@@ -27,19 +27,25 @@
 .left {
   display: flex;
   height: 100%;
-  width: 40%;
+  width: 20%;
   justify-content: space-between;
   flex-direction: column;
-  background-color: yellow;
+  border-right: 1px rgba(180, 180, 180, 0.2) solid;
+}
+
+.center {
+  height: 100%;
+  width: 50%;
 }
 
 .right {
   display: flex;
   height: 100%;
-  width: 40%;
-  justify-content: space-between;
+  width: 30%;
   flex-direction: column;
-  background-color: green;
+  border-left: 1px rgba(180, 180, 180, 0.2) solid;
+  padding-left: 30px;
+  padding-right: 30px;
 }
 
 .name {

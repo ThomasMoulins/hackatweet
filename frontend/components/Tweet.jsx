@@ -1,19 +1,35 @@
 import styles from "../styles/Tweet.module.css";
 import Image from "next/image";
+import Link from "next/link";
+import { useSelector } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart, faTrash } from "@fortawesome/free-solid-svg-icons";
 
-{
-  /* <Tweet
-  firstname="John"
-  username="Doe"
-  text="Ici c'est ici !"
-  likenumber={5}
-  date={new Date()}
-/>; */
-}
+const renderTextWithHashtags = (text) => {
+  //  split pour conserver #tag dans les éléments
+  const parts = text.split(/(#[\p{L}\p{N}_]+)/gu);
 
-function Tweet({ firstname, username, text, likenumber, date }) {
+  return parts.map((part, i) => {
+    // si hashtag
+    if (/^#[\p{L}\p{N}_]+$/u.test(part)) {
+      const tag = part.slice(1); // enleve le '#'
+      return (
+        <Link
+          key={i}
+          href={`/hashtag/${encodeURIComponent(tag)}`}
+          legacyBehavior
+        >
+          <a className={styles.hashtag}>{part}</a>
+        </Link>
+      );
+    }
+    // sinon texte normal
+    return part;
+  });
+};
+
+function Tweet({ firstname, username, text, like, date }) {
+  const user = useSelector((state) => state.user.value);
   const time = null;
 
   return (
@@ -27,14 +43,17 @@ function Tweet({ firstname, username, text, likenumber, date }) {
           height={40}
         />
         <p>
-          {firstname} <span>@{username} - a few seconds</span>
+          {firstname}{" "}
+          <span className={styles.username}>@{username} · a few seconds</span>
         </p>
       </div>
-      <p>{text}</p>
+      <p>{renderTextWithHashtags(text)}</p>
       <div className={styles.iconContainer}>
         <FontAwesomeIcon icon={faHeart} />
-        <span style={{ margin: "0 30px 0 10px" }}>{likenumber}</span>
-        <FontAwesomeIcon icon={faTrash} />
+        <span style={{ margin: "0 30px 0 10px" }}>{like}</span>
+        {firstname === user.firstname && username === user.username && (
+          <FontAwesomeIcon icon={faTrash} className={styles.deleteIcon} />
+        )}
       </div>
     </div>
   );

@@ -1,5 +1,5 @@
 .tweetContainer {
-  background-color: gray;
+  border-top: 1px rgba(180, 180, 180, 0.2) solid;
   padding: 20px;
 }
 
@@ -12,4 +12,22 @@
 .icon {
   border-radius: 50%;
   object-fit: cover;
+}
+
+.username {
+  color: grey;
+}
+
+.hashtag {
+  color: #3690ee;
+  text-decoration: none;
+}
+
+.hashtag:hover {
+  color: #2c77c6;
+}
+
+.deleteIcon:hover {
+  color: gray;
+  cursor: pointer;
 }
