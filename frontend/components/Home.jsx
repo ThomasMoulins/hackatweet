@@ -7,8 +7,9 @@ import Link from "next/link";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../reducers/user";
 import LastTweets from "./LastTweets";
+import Trends from "./Trends";
 
-function Home() {
+function Home({ hashtag }) {
   const router = useRouter();
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user.value);
@@ -51,20 +52,24 @@ function Home() {
   return (
     <>
       <Head>
-        <title>HACKATWEET - Home</title>
+        {hashtag ? (
+          <title>HACKATWEET - Hashtag</title>
+        ) : (
+          <title>HACKATWEET - Home</title>
+        )}
       </Head>
       <main className={styles.main}>
         <div className={styles.left}>
           <div className={styles.logo}>
-<Link href="/home">
+            <Link href="/home">
               <a>
-            <Image
-              src="/images/hackatweet-logo.png"
-              alt="hackatweet logo"
-              width={50}
-              height={40}
-            />
-</a>
+                <Image
+                  src="/images/hackatweet-logo.png"
+                  alt="hackatweet logo"
+                  width={50}
+                  height={40}
+                />
+              </a>
             </Link>
           </div>
 
@@ -88,13 +93,17 @@ function Home() {
             </button>
           </div>
         </div>
+        <div className={styles.center}>
+          {hashtag ? (
+            <Trends hashtag={hashtag} />
+          ) : (
             <>
-        <div className={styles.home}>
-          <h1>Home</h1>
-          <div className={styles.search}>
+              <div className={styles.home}>
+                <h1>Home</h1>
+                <div className={styles.search}>
                   <textarea
                     className={styles.input}
-              placeholder="What's up?"
+                    placeholder="What's up?"
                     onChange={(e) =>
                       e.target.value.length <= 280 &&
                       setNewTweet(e.target.value)
@@ -111,9 +120,10 @@ function Home() {
                     </button>
                   </div>
                 </div>
-          </div>
+              </div>
               <LastTweets refresh={refreshTweets} />
             </>
+          )}
         </div>
         <div className={styles.right}>
           <h1>Trends</h1>
