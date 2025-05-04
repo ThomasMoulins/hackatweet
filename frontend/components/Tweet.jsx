@@ -28,9 +28,16 @@ const renderTextWithHashtags = (text) => {
   });
 };
 
+const renderDate = (date) => {
+  const sec = (Date.now().valueOf() - new Date(date).valueOf()) / 1000;
+  if (sec < 60) return "a few seconds";
+  if (sec / 60 < 60) return "a few minutes";
+  const hours = Math.round(sec / 3600);
+  return `${hours} hours`;
+};
+
 function Tweet({ id, firstname, username, text, like, date, onDelete }) {
   const user = useSelector((state) => state.user.value);
-  const time = null;
 
   const handleDelete = () => {
     fetch(`http://localhost:3000/tweets/${id}`, {
@@ -60,7 +67,9 @@ function Tweet({ id, firstname, username, text, like, date, onDelete }) {
         />
         <p>
           {firstname}{" "}
-          <span className={styles.username}>@{username} · a few seconds</span>
+          <span className={styles.username}>
+            @{username} · {renderDate(date)}
+          </span>
         </p>
       </div>
       <p className={styles.tweetText}>{renderTextWithHashtags(text)}</p>

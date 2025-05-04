@@ -27,7 +27,7 @@ function LastTweets({ refresh, onChange, hashtag }) {
         firstname={data.user.firstname}
         username={data.user.username}
         like={data.like}
-        date={new Date(data.date)}
+        date={data.date}
         isLiked={isLiked}
         onDelete={() => onChange?.()}
       />
