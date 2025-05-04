@@ -28,9 +28,25 @@ const renderTextWithHashtags = (text) => {
   });
 };
 
-function Tweet({ firstname, username, text, like, date }) {
+function Tweet({ id, firstname, username, text, like, date, onDelete }) {
   const user = useSelector((state) => state.user.value);
   const time = null;
+
+  const handleDelete = () => {
+    fetch(`http://localhost:3000/tweets/${id}`, {
+      method: "DELETE",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        token: user.token,
+      }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        data.result
+          ? onDelete?.(id)
+          : console.error("Erreur lors de la suppression du tweet");
+      });
+  };
 
   return (
     <div className={styles.tweetContainer}>
@@ -52,7 +68,11 @@ function Tweet({ firstname, username, text, like, date }) {
         <FontAwesomeIcon icon={faHeart} />
         <span style={{ margin: "0 30px 0 10px" }}>{like}</span>
         {firstname === user.firstname && username === user.username && (
-          <FontAwesomeIcon icon={faTrash} className={styles.deleteIcon} />
+          <FontAwesomeIcon
+            icon={faTrash}
+            className={styles.deleteIcon}
+            onClick={handleDelete}
+          />
         )}
       </div>
     </div>

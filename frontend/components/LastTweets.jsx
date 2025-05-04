@@ -2,7 +2,7 @@ import styles from "../styles/LastTweets.module.css";
 import { useEffect, useState } from "react";
 import Tweet from "./Tweet";
 
-function LastTweets({ refresh, hashtag }) {
+function LastTweets({ refresh, onChange, hashtag }) {
   const [tweetsData, setTweetsData] = useState([]);
 
   useEffect(() => {
@@ -22,12 +22,14 @@ function LastTweets({ refresh, hashtag }) {
     return (
       <Tweet
         key={data._id}
+        id={data._id}
         text={data.text}
         firstname={data.user.firstname}
         username={data.user.username}
         like={data.like}
         date={new Date(data.date)}
         isLiked={isLiked}
+        onDelete={() => onChange?.()}
       />
     );
   });

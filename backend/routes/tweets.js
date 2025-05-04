@@ -33,6 +33,38 @@ router.post("/", (req, res) => {
   }
 });
 
+/* ------ Delete Tweet ------ */
+router.delete("/:id", async (req, res) => {
+  try {
+    const tweetId = req.params.id;
+    const { token } = req.body;
+
+    if (!checkBody(req.body, ["token"])) {
+      res.json({ result: false, error: "Missing or empty fields" });
+      return;
+    }
+
+    const tweet = await Tweet.findById(tweetId);
+    if (!tweet) {
+      return res.status(404).json({ result: false, error: "Tweet non trouvé" });
+    }
+
+    const user = await User.findOne({ token });
+    if (!user) {
+      return res.status(401).json({ result: false, error: "Token invalide" });
+    }
+
+    if (tweet.user.toString() !== user._id.toString()) {
+      return res.status(403).json({ result: false, error: "Accès refusé" });
+    }
+
+    await Tweet.deleteOne({ _id: tweetId });
+    return res.json({ result: true });
+  } catch (e) {
+    res.status(500).json({ result: false, error: e.message });
+  }
+});
+
 /* ------ Get all Tweets ------ */
 router.get("/", (req, res) => {
   try {

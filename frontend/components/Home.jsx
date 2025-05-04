@@ -17,17 +17,13 @@ function Home({ hashtag }) {
   const [newTweet, setNewTweet] = useState("");
   const [refreshTweets, setRefreshTweets] = useState(false);
 
-  const fetchHashtags = () => {
+  useEffect(() => {
     fetch("http://localhost:3000/tweets/hashtags")
       .then((response) => response.json())
       .then((data) => {
         data.result && setHashtags(data.hashtags);
       });
-  };
-
-  useEffect(() => {
-    fetchHashtags();
-  }, []);
+  }, [refreshTweets]);
 
   const handleLogout = () => {
     dispatch(logout());
@@ -45,7 +41,6 @@ function Home({ hashtag }) {
     }).then(() => {
       setNewTweet("");
       setRefreshTweets(!refreshTweets);
-      fetchHashtags();
     });
   };
 
@@ -95,7 +90,10 @@ function Home({ hashtag }) {
         </div>
         <div className={styles.center}>
           {hashtag ? (
-            <Trends hashtag={hashtag} />
+            <Trends
+              hashtag={hashtag}
+              onChange={() => setRefreshTweets(!refreshTweets)}
+            />
           ) : (
             <>
               <div className={styles.home}>
@@ -121,7 +119,10 @@ function Home({ hashtag }) {
                   </div>
                 </div>
               </div>
-              <LastTweets refresh={refreshTweets} />
+              <LastTweets
+                refresh={refreshTweets}
+                onChange={() => setRefreshTweets(!refreshTweets)}
+              />
             </>
           )}
         </div>

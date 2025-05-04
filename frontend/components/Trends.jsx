@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import styles from "../styles/Home.module.css";
 import LastTweets from "./LastTweets";
 
-function Trends({ hashtag }) {
+function Trends({ hashtag, onChange }) {
   const router = useRouter();
   const [searchedHashtag, setSearchedHashtag] = useState(hashtag);
   const [refreshTweets, setRefreshTweets] = useState(false);
@@ -20,12 +20,11 @@ function Trends({ hashtag }) {
     )
       return;
 
-    setRefreshTweets(!refreshTweets);
-
     // redémarre le timer à chaque frappe
     const id = setTimeout(() => {
       const clean = searchedHashtag.replace(/^#/, "").trim();
       router.push(`/hashtag/${encodeURIComponent(clean)}`);
+      setRefreshTweets(!refreshTweets);
     }, 600);
 
     // remet le timer à 0 ms si l’utilisateur retape avant 600 ms
@@ -46,7 +45,14 @@ function Trends({ hashtag }) {
           />
         </div>
       </div>
-      <LastTweets refresh={refreshTweets} hashtag={hashtag} />
+      <LastTweets
+        refresh={refreshTweets}
+        onChange={() => {
+          setRefreshTweets(!refreshTweets);
+          onChange?.();
+        }}
+        hashtag={hashtag}
+      />
     </>
   );
 }
