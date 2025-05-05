@@ -36,7 +36,7 @@ const renderDate = (date) => {
 
 function Tweet({ id, firstname, username, text, like, date, onDelete }) {
   const user = useSelector((state) => state.user.value);
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   const handleDelete = () => {
     fetch(`http://localhost:3000/tweets/${id}`, {
@@ -55,21 +55,25 @@ function Tweet({ id, firstname, username, text, like, date, onDelete }) {
   };
 
   const handleLiked = () => {
-    fetch('http://localhost:3000/users/liked', {
-      method: 'PUT',
+    fetch("http://localhost:3000/users/liked", {
+      method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         token: user.token,
-        tweetId: id
+        tweetId: id,
       }),
     })
-    .then((response) => response.json())
-    .then((data) => {
-      data.result
-       ? dispatch(setLiked({ tweetId: id }))
-       :console.error("Erreur lors de l'ajout/suppression en favoris")
-    })
-  }
+      .then((response) => response.json())
+      .then((data) => {
+        data.result
+          ? dispatch(setLiked({ tweetId: id }))
+          : console.error("Erreur lors de l'ajout/suppression en favoris");
+      });
+  };
+
+  const setColor = () => {
+    return user.likedTweets.some((e) => e === id) ? "red" : null;
+  };
 
   return (
     <div className={styles.tweetContainer}>
@@ -90,8 +94,14 @@ function Tweet({ id, firstname, username, text, like, date, onDelete }) {
       </div>
       <p className={styles.tweetText}>{renderTextWithHashtags(text)}</p>
       <div className={styles.iconContainer}>
-        <FontAwesomeIcon icon={faHeart} onClick={handleLiked}/>
-        <span style={{ margin: "0 30px 0 10px" }}>{like}</span>
+        <FontAwesomeIcon
+          icon={faHeart}
+          onClick={handleLiked}
+          style={{ color: setColor() }}
+        />
+        <span style={{ margin: "0 30px 0 10px", color: setColor() }}>
+          {like}
+        </span>
         {firstname === user.firstname && username === user.username && (
           <FontAwesomeIcon
             icon={faTrash}
