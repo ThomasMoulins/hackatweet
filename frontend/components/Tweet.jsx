@@ -4,6 +4,8 @@ import Link from "next/link";
 import { useSelector } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart, faTrash } from "@fortawesome/free-solid-svg-icons";
+import { useDispatch } from "react-redux";
+import { setLiked } from "../reducers/user";
 
 const renderTextWithHashtags = (text) => {
   //  split pour conserver #tag dans les éléments
@@ -34,6 +36,7 @@ const renderDate = (date) => {
 
 function Tweet({ id, firstname, username, text, like, date, onDelete }) {
   const user = useSelector((state) => state.user.value);
+  const dispatch = useDispatch()
 
   const handleDelete = () => {
     fetch(`http://localhost:3000/tweets/${id}`, {
@@ -50,6 +53,23 @@ function Tweet({ id, firstname, username, text, like, date, onDelete }) {
           : console.error("Erreur lors de la suppression du tweet");
       });
   };
+
+  const handleLiked = () => {
+    fetch('http://localhost:3000/users/liked', {
+      method: 'PUT',
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        token: user.token,
+        tweetId: id
+      }),
+    })
+    .then((response) => response.json())
+    .then((data) => {
+      data.result
+       ? dispatch(setLiked({ tweetId: id }))
+       :console.error("Erreur lors de l'ajout/suppression en favoris")
+    })
+  }
 
   return (
     <div className={styles.tweetContainer}>
@@ -70,7 +90,7 @@ function Tweet({ id, firstname, username, text, like, date, onDelete }) {
       </div>
       <p className={styles.tweetText}>{renderTextWithHashtags(text)}</p>
       <div className={styles.iconContainer}>
-        <FontAwesomeIcon icon={faHeart} />
+        <FontAwesomeIcon icon={faHeart} onClick={handleLiked}/>
         <span style={{ margin: "0 30px 0 10px" }}>{like}</span>
         {firstname === user.firstname && username === user.username && (
           <FontAwesomeIcon

@@ -32,6 +32,7 @@ function SignUp({ onClose }) {
               firstname: firstname,
               username: username,
               token: data.token,
+              likedTweets: []
             })
           );
           setFirstName("");

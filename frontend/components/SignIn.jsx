@@ -30,6 +30,7 @@ function SignIn({ onClose }) {
               firstname: data.firstname,
               username: username,
               token: data.token,
+              likedTweets: data.likedTweets
             })
           );
           setUsername("");
