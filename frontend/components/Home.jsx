@@ -18,7 +18,7 @@ function Home({ hashtag }) {
   const [refreshTweets, setRefreshTweets] = useState(false);
 
   useEffect(() => {
-    fetch("http://localhost:3000/tweets/hashtags")
+    fetch("https://hackatweet-backend-murex.vercel.app/tweets/hashtags")
       .then((response) => response.json())
       .then((data) => {
         data.result && setHashtags(data.hashtags);
@@ -31,7 +31,7 @@ function Home({ hashtag }) {
   };
 
   const handleTweet = () => {
-    fetch("http://localhost:3000/tweets", {
+    fetch("https://hackatweet-backend-murex.vercel.app/tweets", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({

@@ -15,7 +15,7 @@ function SignUp({ onClose }) {
   const [password, setPassword] = useState("");
 
   const handleSubmit = () => {
-    fetch("http://localhost:3000/users/signup", {
+    fetch("https://hackatweet-backend-murex.vercel.app/users/signup", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({

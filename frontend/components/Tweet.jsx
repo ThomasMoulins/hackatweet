@@ -39,7 +39,7 @@ function Tweet({ id, firstname, username, text, like, date, onDelete }) {
   const dispatch = useDispatch();
 
   const handleDelete = () => {
-    fetch(`http://localhost:3000/tweets/${id}`, {
+    fetch(`https://hackatweet-backend-murex.vercel.app/tweets/${id}`, {
       method: "DELETE",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -55,7 +55,7 @@ function Tweet({ id, firstname, username, text, like, date, onDelete }) {
   };
 
   const handleLiked = () => {
-    fetch("http://localhost:3000/users/liked", {
+    fetch("https://hackatweet-backend-murex.vercel.app/users/liked", {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -65,7 +65,7 @@ function Tweet({ id, firstname, username, text, like, date, onDelete }) {
     })
       .then((response) => response.json())
       .then((data) => {
-        fetch("http://localhost:3000/tweets/liked", {
+        fetch("https://hackatweet-backend-murex.vercel.app/tweets/liked", {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
