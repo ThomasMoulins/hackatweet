@@ -172,3 +172,8 @@
   font-size: smaller;
   color: grey;
 }
+
+.tweetLength {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: bold;
+}

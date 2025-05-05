@@ -109,7 +109,7 @@ function Home({ hashtag }) {
                     value={newTweet}
                   />
                   <div>
-                    <span>{newTweet.length}/280</span>
+                    <span >{newTweet.length}<span className={styles.tweetLength}>/</span>280</span>
                     <button
                       onClick={handleTweet}
                       className={styles.tweetButton}

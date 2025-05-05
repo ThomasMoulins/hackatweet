@@ -65,6 +65,15 @@ function Tweet({ id, firstname, username, text, like, date, onDelete }) {
     })
       .then((response) => response.json())
       .then((data) => {
+        fetch("http://localhost:3000/tweets/liked", {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            tweetId: id,
+            number: user.likedTweets.some((e) => e === id) ? -1 : +1
+          })
+        })
+        .then(() => onDelete?.(id))
         data.result
           ? dispatch(setLiked({ tweetId: id }))
           : console.error("Erreur lors de l'ajout/suppression en favoris");
@@ -97,7 +106,7 @@ function Tweet({ id, firstname, username, text, like, date, onDelete }) {
         <FontAwesomeIcon
           icon={faHeart}
           onClick={handleLiked}
-          style={{ color: setColor() }}
+          style={{ color: setColor(), cursor: 'pointer' }}
         />
         <span style={{ margin: "0 30px 0 10px", color: setColor() }}>
           {like}
