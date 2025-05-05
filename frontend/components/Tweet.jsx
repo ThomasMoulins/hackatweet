@@ -39,7 +39,7 @@ function Tweet({ id, firstname, username, text, like, date, onDelete }) {
   const dispatch = useDispatch();
 
   const handleDelete = () => {
-    fetch(`https://hackatweet-backend-murex.vercel.app/tweets/${id}`, {
+    fetch(`https://hackatweet-kappa.vercel.app/tweets/${id}`, {
       method: "DELETE",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -55,7 +55,7 @@ function Tweet({ id, firstname, username, text, like, date, onDelete }) {
   };
 
   const handleLiked = () => {
-    fetch("https://hackatweet-backend-murex.vercel.app/users/liked", {
+    fetch("https://hackatweet-kappa.vercel.app/users/liked", {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -65,15 +65,14 @@ function Tweet({ id, firstname, username, text, like, date, onDelete }) {
     })
       .then((response) => response.json())
       .then((data) => {
-        fetch("https://hackatweet-backend-murex.vercel.app/tweets/liked", {
+        fetch("https://hackatweet-kappa.vercel.app/tweets/liked", {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
             tweetId: id,
-            number: user.likedTweets.some((e) => e === id) ? -1 : +1
-          })
-        })
-        .then(() => onDelete?.(id))
+            number: user.likedTweets.some((e) => e === id) ? -1 : +1,
+          }),
+        }).then(() => onDelete?.(id));
         data.result
           ? dispatch(setLiked({ tweetId: id }))
           : console.error("Erreur lors de l'ajout/suppression en favoris");
@@ -106,7 +105,7 @@ function Tweet({ id, firstname, username, text, like, date, onDelete }) {
         <FontAwesomeIcon
           icon={faHeart}
           onClick={handleLiked}
-          style={{ color: setColor(), cursor: 'pointer' }}
+          style={{ color: setColor(), cursor: "pointer" }}
         />
         <span style={{ margin: "0 30px 0 10px", color: setColor() }}>
           {like}

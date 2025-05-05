@@ -15,7 +15,7 @@ function SignUp({ onClose }) {
   const [password, setPassword] = useState("");
 
   const handleSubmit = () => {
-    fetch("https://hackatweet-backend-murex.vercel.app/users/signup", {
+    fetch("https://hackatweet-kappa.vercel.app/users/signup", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -32,7 +32,7 @@ function SignUp({ onClose }) {
               firstname: firstname,
               username: username,
               token: data.token,
-              likedTweets: []
+              likedTweets: [],
             })
           );
           setFirstName("");

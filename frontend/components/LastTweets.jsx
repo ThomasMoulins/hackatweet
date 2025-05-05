@@ -7,8 +7,8 @@ function LastTweets({ refresh, onChange, hashtag }) {
 
   useEffect(() => {
     const fetchLink = hashtag
-      ? `https://hackatweet-backend-murex.vercel.app/hashtags/${hashtag}`
-      : "https://hackatweet-backend-murex.vercel.app/tweets";
+      ? `https://hackatweet-kappa.vercel.app/hashtags/${hashtag}`
+      : "https://hackatweet-kappa.vercel.app/tweets";
     fetch(fetchLink)
       .then((response) => response.json())
       .then((data) => {
