@@ -84,7 +84,7 @@ router.put("/liked", async (req, res) => {
   )
   
  if (removeId) {
-  return res.json({ result: true })
+  return res.json({ result: true})
  }
 
   const updateUser = await User.findOneAndUpdate(
@@ -95,7 +95,7 @@ router.put("/liked", async (req, res) => {
   if (!updateUser) {
     return res.status(404).json({ result: false, error: "User not found" });
   }
-  return res.json({ result: true });
+  return res.json({ result: true});
 });
 
 

@@ -120,4 +120,19 @@ router.get("/hashtags", async (req, res) => {
   }
 });
 
+router.put('/liked', async (req, res) => {
+  if (!checkBody(req.body, ["tweetId", "number"])) {
+    res.json({ result: false, error: "Missing or empty fields" });
+    return;
+  }
+
+  const setLiked = await Tweet.findByIdAndUpdate(
+    req.body.tweetId,
+    {$inc: { like: req.body.number} } 
+  )
+  if (setLiked) {
+    return res.json({ result: true })
+  }
+})
+
 module.exports = router;
