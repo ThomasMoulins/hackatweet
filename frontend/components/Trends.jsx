@@ -36,8 +36,9 @@ function Trends({ hashtag, onChange }) {
       <div className={styles.home}>
         <h1>Hashtag</h1>
         <div className={styles.search}>
-          <textarea
-            className={styles.input}
+          <input
+            className={styles.inputHashtag}
+            type="text"
             placeholder="#What's your favorite subject ?"
             onChange={(e) => setSearchedHashtag(e.target.value)}
             value={searchedHashtag}

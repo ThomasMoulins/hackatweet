@@ -14,11 +14,7 @@ const renderTextWithHashtags = (text) => {
     if (/^#[\p{L}\p{N}_]+$/u.test(part)) {
       const tag = part.slice(1); // enleve le '#'
       return (
-        <Link
-          key={i}
-          href={`/hashtag/${encodeURIComponent(tag)}`}
-          legacyBehavior
-        >
+        <Link key={i} href={`/hashtag/${encodeURIComponent(tag)}`}>
           <a className={styles.hashtag}>{part}</a>
         </Link>
       );

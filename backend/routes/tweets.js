@@ -46,16 +46,16 @@ router.delete("/:id", async (req, res) => {
 
     const tweet = await Tweet.findById(tweetId);
     if (!tweet) {
-      return res.status(404).json({ result: false, error: "Tweet non trouvé" });
+      return res.status(404).json({ result: false, error: "Tweet not found" });
     }
 
     const user = await User.findOne({ token });
     if (!user) {
-      return res.status(401).json({ result: false, error: "Token invalide" });
+      return res.status(401).json({ result: false, error: "Invalid Token" });
     }
 
     if (tweet.user.toString() !== user._id.toString()) {
-      return res.status(403).json({ result: false, error: "Accès refusé" });
+      return res.status(403).json({ result: false, error: "Access denied" });
     }
 
     await Tweet.deleteOne({ _id: tweetId });

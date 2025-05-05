@@ -17,8 +17,6 @@ function LastTweets({ refresh, onChange, hashtag }) {
   }, [refresh, hashtag]);
 
   const tweets = tweetsData.map((data) => {
-    const isLiked = true;
-
     return (
       <Tweet
         key={data._id}
@@ -28,7 +26,6 @@ function LastTweets({ refresh, onChange, hashtag }) {
         username={data.user.username}
         like={data.like}
         date={data.date}
-        isLiked={isLiked}
         onDelete={() => onChange?.()}
       />
     );

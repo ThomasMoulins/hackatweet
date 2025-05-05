@@ -44,7 +44,7 @@
 }
 
 .input {
-  background-color: inherit;
+  background-color: transparent;
   border: 1px #bac0c6 solid;
   border-radius: 5px;
   margin-bottom: 10px;
